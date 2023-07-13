@@ -8,6 +8,9 @@ import math
 def getFloat(msg):
     try:
         f = float(input(msg))
+        if f <= 0:
+            print('Must be bigger then 0 you dumbass')
+            return getFloat(msg)
         return f
     except ValueError:
         # This will run if the input is not a number
@@ -66,7 +69,7 @@ while ans:
             # Write Information into the file
             calculations.write('shape: {}\n radius: {}\n pi: {}\n area: {}\n perimeter: {}\n\n'.format(shape, radius, pi, area, perimeter))
             calculations.flush()
-            
+
         # If the shape is a Triangle this code will run.
         if shape == validshapes[2]: 
             # A menu for the user to select their dimensions
@@ -152,6 +155,7 @@ while ans:
         print(calculations.read())
         # Printing a goodbye message and closing the calculations file
         print("\nGoodbye")
+        quit()
         calculations.close() 
     
     # This code will run if the user didnt enter a number between 1-4
