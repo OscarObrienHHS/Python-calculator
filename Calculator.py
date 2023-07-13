@@ -161,8 +161,8 @@ while ans:
         print(calculations.read())
         # Printing a goodbye message and closing the calculations file
         print("\nGoodbye")
-        quit()
         calculations.close()
+        quit()
 
     # This code will run if the user didnt enter a number between 1-4
     else:
