@@ -1,8 +1,9 @@
-#setting up stuff for checking that the shape is valid
+import math
+
+# setting up stuff for checking that the shape is valid
 validshapes = ["rectangle", "circle", "triangle", "parallelogram"]
 calculations = open("storedcalculations.txt", "a+")
-#Importing math for the square root (sqrt) in herons formula
-import math
+# Importing math for the square root (sqrt) in herons formula
 
 # Error Checker thingy majig
 def getFloat(msg):
