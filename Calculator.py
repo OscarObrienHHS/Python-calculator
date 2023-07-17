@@ -166,4 +166,5 @@ while ans:
 
     # This code will run if the user didnt enter a number between 1-4
     else:
-        print("\nNot Valid Choice Try again \n")
+        print("\nNot Valid Choice Try again")
+        "\n"
