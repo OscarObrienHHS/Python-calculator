@@ -27,24 +27,35 @@ def getfloat(msg):
 ans = True
 while ans:
     print("""
-    Hello, Please select what you would like to do
-    1: Calculator
-    2: View History
-    3: Clear History
-    4: Exit program
-    """)
+Hello, Please select what you would like to do
+1: Calculator
+2: View History
+3: Clear History
+4: Exit program
+    \n""")
     ans = input("What would you like to do? \n")
     # if the user enters 1 the code below will run
     if ans == "1":
         print("Calculator Opening")
         # Get the Shape the user wants to calculate and set it to lowercase.
-        shape = input('Please Select a following shape by typing it: Rectangle, Circle, Triangle, Parallelogram \n')
+        shape = input('''
+Please Select a following shape by typing it:
+Rectangle
+Circle
+Triangle
+Parallelogram \n''')
         shape = shape.lower()
 
-        # Check If Shape is valid, if shape is not valid it will loop the code below.
+        # Check If Shape is valid
         while shape not in validshapes:
-            # Get the shape the user wants to calculate and set it to lowercase.
-            shape = input('Sorry I dont recognise that shape, please select a following shape by typing it: Rectangle, Circle, Triangle, Parallelogram \n')
+            # Ask user what shape they want to calculate
+            shape = input('''
+I dont recognise that shape, please select a following shape by typing it:
+Rectangle
+Circle
+Triangle
+Parallelogram \n''')
+            # set the shape to be lowercase
             shape = shape.lower()
 
         # If the Shape is a Rectangle this code will run.
@@ -56,9 +67,16 @@ while ans:
             area = width * length
             perimeter = 2 * (length + width)
             # Print out answer to user
-            print('The area of your {} is {} and your perimeter is {}'.format(shape, area, perimeter))
+            print('The area of your {} is {} and your perimeter is {}'
+                  .format(shape, area, perimeter))
             # Write Information into the file
-            calculations.write('shape: {}\n length: {}\n width: {}\n area: {}\n perimeter: {}\n\n'.format(shape, length, width, area, perimeter))
+            calculations.write('''
+shape: {}
+length: {}
+width: {}
+area: {}
+perimeter: {} \n
+'''.format(shape, length, width, area, perimeter))
             calculations.flush()
 
         # If the Shape is a Circle this code will run.
@@ -71,9 +89,16 @@ while ans:
             area = pi * (radius * radius)
             perimeter = (pi * 2) * radius
             # Printing out answer for user
-            print('The area of your {} is {} and your perimeter is {}'.format(shape, area, perimeter))
+            print('The area of your {} is {} and your perimeter is {}'
+                  .format(shape, area, perimeter))
             # Write Information into the file
-            calculations.write('shape: {}\n radius: {}\n pi: {}\n area: {}\n perimeter: {}\n\n'.format(shape, radius, pi, area, perimeter))
+            calculations.write('''
+shape: {}
+radius: {}
+pi: {}
+area: {}
+perimeter: {} \n
+'''.format(shape, radius, pi, area, perimeter))
             calculations.flush()
 
         # If the shape is a Triangle this code will run.
@@ -90,9 +115,9 @@ while ans:
                 # If they enter one this code will run.
                 if triangle_ans == "1":
                     # Getting the three sides of the triangle
-                    side1 = getfloat('What is the first side of your triangle?\n')
-                    side2 = getfloat('What is the second side of your triangle?\n')
-                    side3 = getfloat('What is the third side of your triangle?\n')
+                    side1 = getfloat('What is the first side\n')
+                    side2 = getfloat('What is the second side\n')
+                    side3 = getfloat('What is the third side\n')
                     # Calculatiing the area and perimeter
                     perimeter = side1 + side2 + side3
                     s = perimeter / 2
@@ -100,7 +125,14 @@ while ans:
                     # Printing out the answer for the user
                     print('The area of your {} is {} and your perimeter is {}'.format(shape, area, perimeter))
                     # Writing Information into the calculations file
-                    calculations.write('shape: {}\n side1: {}\n side2: {}\n side3: {}\n area: {}\n perimeter: {}\n\n'.format(shape, side1, side2, side3, area, perimeter))
+                    calculations.write('''
+shape: {}
+side1: {}
+side2: {}
+side3: {}
+area: {}
+perimeter: {}\n
+'''.format(shape, side1, side2, side3, area, perimeter))
                     calculations.flush()
                     # Ending the while loop
                     triangle_ans = False
@@ -113,7 +145,7 @@ while ans:
                     # Calculating the area
                     area = (height * base) / 2
                     # Printing out the answer for the user
-                    print('The area of your {} is {} and you cannot get a perimeter from only base and height'.format(shape, area))
+                    print('''The area of your {} is {} and you cannot get a perimeter from only base and height'''.format(shape, area))
                     # Writing information into the calculations file
                     calculations.write('shape: {}\n base: {}\n height: {}\n area: {}\n\n'.format(shape, base, height, area,))
                     calculations.flush()
@@ -167,4 +199,3 @@ while ans:
     # This code will run if the user didnt enter a number between 1-4
     else:
         print("\nNot Valid Choice Try again")
-
