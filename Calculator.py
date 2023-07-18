@@ -54,7 +54,7 @@ I dont recognise that shape, please select a following shape by typing it:
 Rectangle
 Circle
 Triangle
-Parallelogram \n''')
+Parallelogram \n \n''')
             # set the shape to be lowercase
             shape = shape.lower()
 
@@ -121,9 +121,11 @@ perimeter: {} \n
                     # Calculatiing the area and perimeter
                     perimeter = side1 + side2 + side3
                     s = perimeter / 2
-                    area = math.sqrt(s * (s - side1) * (s - side2) * (s - side3))
+                    square = s * (s - side1) * (s - side2) * (s - side3)
+                    area = math.sqrt(square)
                     # Printing out the answer for the user
-                    print('The area of your {} is {} and your perimeter is {}'.format(shape, area, perimeter))
+                    print('The area of your {} is {} and your perimeter is {}'
+                          .format(shape, area, perimeter))
                     # Writing Information into the calculations file
                     calculations.write('''
 shape: {}
@@ -145,9 +147,15 @@ perimeter: {}\n
                     # Calculating the area
                     area = (height * base) / 2
                     # Printing out the answer for the user
-                    print('''The area of your {} is {} and you cannot get a perimeter from only base and height'''.format(shape, area))
+                    print('The area of your {} is {}'
+                          .format(shape, area))
                     # Writing information into the calculations file
-                    calculations.write('shape: {}\n base: {}\n height: {}\n area: {}\n\n'.format(shape, base, height, area,))
+                    calculations.write('''
+shape: {}
+base: {}
+height: {}
+area: {} \n
+'''.format(shape, base, height, area,))
                     calculations.flush()
                     # Ending while loop
                     triangle_ans = False
@@ -156,25 +164,32 @@ perimeter: {}\n
                 else:
                     print('\n Not valid choice try again')
 
-        # If the shape is a Parallelogram this code will run and calculate the area and perimeter of the shape.
+        # If the shape is a Parallelogram this code will run.
         if shape == validshapes[3]:
             # Getting the dimensions of a Parallelogram
-            base = getfloat('What is length of the base of your parallelogram? \n')
-            height = getfloat('What is height of your parallelogram? \n')
-            side = getfloat('What is the length of the side of your parallelogram?\n')
+            base = getfloat('What is length of the base? \n')
+            height = getfloat('What is height? \n')
+            side = getfloat('What is the length of the side?\n')
             # Calculating the area and perimeter
             area = base * height
             perimeter = 2 * (side + base)
             # Printing the answer for the user
-            print('The area of your {} is {} and your perimeter is {}'.format(shape, area, perimeter))
+            print('The area of your {} is {} and your perimeter is {}'
+                  .format(shape, area, perimeter))
             # Writing information into the calculations file
-            calculations.write('shape: {}\n base: {}\n side: {}\n area: {}\n perimeter: {}\n\n'.format(shape, base, side, height, perimeter))
+            calculations.write('''
+shape: {}
+base: {}
+side: {}
+area: {}
+perimeter: {} \n
+'''.format(shape, base, side, height, perimeter))
             calculations.flush()
 
     # If the user enters 2 the code below will run.
     elif ans == "2":
         print("\nHistory Printing")
-        # Set cursor to the top of the file and then read and print it out for the user
+        # Set cursor to the top of the file and then read and print it
         calculations.seek(0)
         print(calculations.read())
 
@@ -188,7 +203,7 @@ perimeter: {}\n
     elif ans == "4":
         # Printing out the history before the program closes
         print("\nHistory Printing")
-        # Set cursor to the top of the file and then read and print it out for the user
+        # Set cursor to the top of the file and then read and print it
         calculations.seek(0)
         print(calculations.read())
         # Printing a goodbye message and closing the calculations file
