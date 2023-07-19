@@ -1,10 +1,12 @@
 """This is a python calculator."""
+# Importing math for the square root (sqrt) in herons formula
 import math
 
 # setting up stuff for checking that the shape is valid
 validshapes = ["rectangle", "circle", "triangle", "parallelogram"]
+
+# Opening up the file to read and write
 calculations = open("storedcalculations.txt", "a+")
-# Importing math for the square root (sqrt) in herons formula
 
 
 # Error Checker thingy majig
@@ -138,8 +140,8 @@ perimeter: {}\n
                     calculations.flush()
                     # Ending the while loop
                     triangle_ans = False
+                    
                     # If they enter two this code will run.
-
                 elif triangle_ans == "2":
                     # Getting the base and height
                     base = getfloat('What is the base of your triangle?\n')
